@@ -21,15 +21,26 @@ public class ExchangeProvider {
 
     private final RestTemplate restTemplate =  new RestTemplate();
 
-    public ExchangeRate getExchangeRate() {
-
+    public ExchangeResponse calculateExcangeRate() {
         URI uri = UriComponentsBuilder.fromHttpUrl(apiUrl)
                 .queryParam("access_key",apiKey)
                 .build().toUri();
 
-        ExchangeResponse exchangeResponse = restTemplate.getForObject(uri, ExchangeResponse.class);
+        ExchangeResponse response = restTemplate.getForObject(uri, ExchangeResponse.class);
+
+        return response;
+    }
+
+    public String calcualteExchangeRate(int money) {
+        ExchangeResponse exchangeResponse = calculateExcangeRate();
+
+        return "Your " + "$"+ money + " = " + money * exchangeResponse.getQuotes().get("USDTRY") + " Turkish Lira";
 
 
+    }
+
+    public ExchangeRate getExchangeRate() {
+        ExchangeResponse exchangeResponse = calculateExcangeRate();
 
         return new ExchangeRate(
                 "USD",

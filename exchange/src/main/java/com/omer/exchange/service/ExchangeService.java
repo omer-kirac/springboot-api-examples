@@ -16,9 +16,12 @@ public class ExchangeService {
     private final ExchangeProvider exchangeProvider;
 
 
-
     public ExchangeRate getExchangeRate() {
         return exchangeProvider.getExchangeRate();
+    }
+
+    public String calculateExchange(int money) {
+        return exchangeProvider.calcualteExchangeRate(money);
     }
 
 
