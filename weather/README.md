@@ -1,6 +1,6 @@
-# Project idea https://roadmap.sh/projects/weather-api-wrapper-service
-
 # Weather API Service
+
+# Project idea https://roadmap.sh/projects/weather-api-wrapper-service
 
 This project is a Spring Boot based service that connects to an external weather API and optimizes the results with Redis caching.
 
