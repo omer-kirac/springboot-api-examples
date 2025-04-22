@@ -14,8 +14,9 @@ Postman (for testing)
 
 📦 Projects
 1. Weather Application 🌦
-API: OpenWeatherMap
+API: Timeline Weather API
 A simple application that displays real-time weather data based on the user's location.
+Project idea: https://roadmap.sh/projects/weather-api-wrapper-service
 
 2. Currency Exchange Tracker 💱
 API: ExchangeRate API
