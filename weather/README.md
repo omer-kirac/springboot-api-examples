@@ -1,45 +1,50 @@
-# Hava Durumu API Servisi
+# Project idea https://roadmap.sh/projects/weather-api-wrapper-service
 
-#Proje fikri
-https://roadmap.sh/projects/weather-api-wrapper-service
+# Weather API Service
 
-Bu proje, dış hava durumu API'sine bağlanan ve sonuçları Redis önbelleği ile optimize eden Spring Boot tabanlı bir servistir.
+This project is a Spring Boot based service that connects to an external weather API and optimizes the results with Redis caching.
 
-## Özellikler
+## Features
 
-- Şehir bazlı hava durumu verileri
-- Önbellekleme ile API çağrı sayısını azaltma (Redis)
-- 6 saatlik TTL ile otomatik önbellek yenileme
+- City-based weather data
+- Reduced API calls with caching (Redis)
+- Automatic cache refresh with 6-hour TTL
 
-## Teknolojiler
+## Technologies
 
 - Spring Boot 3.4.4
 - Spring Data Redis
 - Java 17
 - Maven
 
+## Getting Started
 
+### Requirements
 
-### Uygulamayı Çalıştırma
+- JDK 17
+- Maven
+- Redis
+
+### Running the Application
 
 ```bash
 mvn spring-boot:run
 ```
 
-## API Kullanımı
+## API Usage
 
-### Şehir için Hava Durumu Bilgisi Alma
+### Get Weather for a City
 
 ```
-GET /weather?city={şehir_adı}
+GET /weather?city={city_name}
 ```
 
-**Örnek:**
+**Example:**
 ```bash
 curl "http://localhost:8080/weather?city=Istanbul"
 ```
 
-**Yanıt örneği:**
+**Sample Response:**
 ```json
 {
   "datetime": "2023-09-30",
@@ -50,35 +55,35 @@ curl "http://localhost:8080/weather?city=Istanbul"
 }
 ```
 
-## Yapılandırma
+## Configuration
 
-Uygulama, `application.properties` dosyasında yapılandırılabilir:
+The application can be configured in the `application.properties` file:
 
 ```properties
-# API yapılandırması
+# API configuration
 weather.api.url=https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{city}
 weather.api.key=YOUR-API-KEY
 
-# Redis yapılandırması
+# Redis configuration
 spring.data.redis.host=localhost
 spring.data.redis.port=6379
 redis.ttl.hours=6
 ```
 
-## Önbellekleme Stratejisi
+## Caching Strategy
 
-- Hava durumu verileri 6 saat süreyle önbelleğe alınır
-- Aynı şehir için 6 saat içinde yapılan istekler API'ye ulaşmadan önbellekten yanıtlanır
-- TTL süresi dolduğunda veriler otomatik olarak güncellenir
+- Weather data is cached for 6 hours
+- Requests for the same city within 6 hours are responded from the cache without reaching the API
+- Data is automatically updated when the TTL expires
 
-## Katkıda Bulunma
+## Contributing
 
-1. Bu depoyu fork edin
-2. Yeni bir özellik dalı oluşturun (`git checkout -b yeni-ozellik`)
-3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
-4. Dalınıza push yapın (`git push origin yeni-ozellik`)
-5. Bir Pull Request oluşturun
+1. Fork this repository
+2. Create a feature branch (`git checkout -b new-feature`)
+3. Commit your changes (`git commit -am 'Added new feature'`)
+4. Push to the branch (`git push origin new-feature`)
+5. Create a Pull Request
 
-## Lisans
+## License
 
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. 
+This project is licensed under the [MIT License](LICENSE). 
