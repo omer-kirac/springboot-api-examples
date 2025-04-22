@@ -1,5 +1,8 @@
 # Hava Durumu API Servisi
 
+#Proje fikri
+https://roadmap.sh/projects/weather-api-wrapper-service
+
 Bu proje, dış hava durumu API'sine bağlanan ve sonuçları Redis önbelleği ile optimize eden Spring Boot tabanlı bir servistir.
 
 ## Özellikler
