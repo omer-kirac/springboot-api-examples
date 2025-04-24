@@ -18,7 +18,7 @@ public class Task {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="userId",nullable = false)
+    @JoinColumn(name ="userId")
     private User user;
 
 
