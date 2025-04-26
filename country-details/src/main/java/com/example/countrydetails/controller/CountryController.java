@@ -1,18 +1,20 @@
 package com.example.countrydetails.controller;
 
+import com.example.countrydetails.domain.CountryResponse;
+import com.example.countrydetails.service.CountryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/country")
 public class CountryController {
 
-    @GetMapping
-    public String getCountry(@PathVariable String name) {
-        return
+
+    private final CountryService countryService;
+
+    @GetMapping("/{name}")
+    public CountryResponse getCountry(@PathVariable String name) {
+        return countryService.getCountry(name);
     }
 }

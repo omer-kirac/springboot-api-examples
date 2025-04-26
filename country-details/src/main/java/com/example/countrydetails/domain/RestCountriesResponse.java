@@ -17,17 +17,29 @@ public class RestCountriesResponse {
 //    private List<String> border;
 //    private String flag;
 
-    private String name;
+    private Name name;
     private String cca2;
-    private Map<String, Currency> currencies;
-    private String capital;
-    private String language;
-    private List<String> border;
-    private String flag;
+    private Map<String, Object> currencies;
+    private List<String> capital;
+    private Map<String, Object> languages;
+    private List<String> borders;
+    private Flags flags;
 
     @Data
     public static class Currency {
         private String symbol;
         private String name;
+    }
+
+    @Data
+    public class Name {
+        private String common;
+        private String official;
+    }
+
+    @Data
+    public class Flags {
+        private String png;
+        private String svg;
     }
 }
